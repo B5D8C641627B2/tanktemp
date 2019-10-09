@@ -1,0 +1,143 @@
+<html>
+
+   <head>
+   
+   <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+   
+   
+   
+   
+      <title>Tank Measurements</title>
+      <script type = "text/javascript" 
+         src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		
+      <script type = "text/javascript" language = "javascript">
+         $(document).ready(function() {
+		    
+		    getUpdates(); 
+		    
+		    // check for new updates
+		    setInterval('getUpdates()',65000);
+ 
+		});
+		
+		function getUpdates() {
+
+			// get the data with a webservice call
+               $.getJSON('https://api.thingspeak.com/channels/237253/feed/last.json?api_key=KKKY6GC33SKJ44YB', function(jd) {
+					    					
+		// if the field1 has data update the page
+		if (jd.field1) {
+
+	 $('#223feet').html('<p>' +jd.field1+  '</p>');
+		 $('#223gal').html('<p>' +jd.field2+  '</p>');
+		}           
+  
+			});
+			
+			
+			
+			
+						// get the data with a webservice call
+               $.getJSON('https://api.thingspeak.com/channels/214775/feed/last.json?api_key=EIWT4IGW1IJY0ZBH', function(jd2) {
+					    					
+		// if the field1 has data update the page
+		if (jd2.field1) {
+
+			 $('#224feet').html('<p>' +jd2.field1+  '</p>');
+		 $('#224gal').html('<p>' +jd2.field2+  '</p>');
+		
+		}           
+  
+			});
+			
+									// get the data with a webservice call
+               $.getJSON('https://api.thingspeak.com/channels/242449/feed/last.json?api_key=OFVXA1K6NUEJPAM1', function(jd3) {
+					    					
+		// if the field1 has data update the page
+		if (jd3.field1) {
+
+			 $('#421feet').html('<p>' +jd3.field1+  '</p>');
+		 $('#421gal').html('<p>' +jd3.field2+  '</p>');
+		
+		}           
+  
+			});
+			
+			
+									// get the data with a webservice call
+               $.getJSON('https://api.thingspeak.com/channels/242870/feed/last.json?api_key=YU8W4C18WJG1QD4N', function(jd4) {
+					    					
+		// if the field1 has data update the page
+		if (jd4.field1) {
+
+			 $('#k3feet').html('<p>' +jd4.field1+  '</p>');
+		 $('#k3gal').html('<p>' +jd4.field2+  '</p>');
+		
+		}           
+  
+			});
+			
+			
+			
+			
+			
+		}
+      </script>
+   </head>
+	
+   <body>
+   
+   
+   
+   
+   <table>
+  <tr>
+    <th>Tank</th>
+    <th>Feet</th>
+    <th>Gallons</th>
+  </tr>
+  <tr>
+    <td>Tank 223</td>
+    <td><div id = "223feet">  </div></td>
+    <td><div id = "223gal">  </div></td>
+  </tr>
+  <tr>
+    <td>Tank 224</td>
+    <td><div id = "224feet">  </div></td>
+    <td><div id = "224gal">  </div></td>
+  </tr>
+  <tr>
+    <td>Tank 421</td>
+    <td><div id = "421feet">  </div></td>
+    <td><div id = "421gal">  </div></td>
+  </tr>
+    <tr>
+    <td>Tank K3</td>
+    <td><div id = "k3feet">  </div></td>
+    <td><div id = "k3gal">  </div></td>
+  </tr>
+</table>
+
+</body>
+   
+
+  
+</html>
+
