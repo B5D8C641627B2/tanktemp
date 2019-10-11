@@ -44,9 +44,12 @@ tr:nth-child(even) {
 					    					
 		// if the field1 has data update the page
 		if (jd.field1) {
+			
+		var d = new Date(''+jd.created_at+'');
+		var result = (d.toLocaleString());	
 
 		$('#222temp').html('<p>' +jd.field1+  '</p>');
-		$('#222DT').html(Date(''+jd.created_at+''));
+		$('#222DT').html(result);
 
 		}           
   
