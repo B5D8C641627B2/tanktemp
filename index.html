@@ -56,20 +56,26 @@ tr:nth-child(even) {
 			});
 			
 			
-/*		
+		
 			
-						// get the data with a webservice call
-               $.getJSON('https://api.thingspeak.com/channels/214775/feed/last.json?api_key=EIWT4IGW1IJY0ZBH', function(jd2) {
+			// get the data with a webservice call
+               $.getJSON('https://api.thingspeak.com/channels/903159/feed/last.json?api_key=BFY3KTG85PICGT3S', function(jd) {
 					    					
 		// if the field1 has data update the page
-		if (jd2.field1) {
+		if (jd.field1) {
+			
+		var d = new Date(''+jd.created_at+'');
+		var result = (d.toLocaleString());	
 
-		$('#223temp').html('<p>' +jd2.field1+  '</p>');
-		$('#223DT').html('<p>' Date(+jd2.created_at+).toLocaleString() '</p>');
+		$('#222temp').html('<p>' +jd.field1+  '</p>');
+		$('#222DT').html(result);
 
-		}            
+		}          
   
 			});
+			
+
+/*			
 			
 									// get the data with a webservice call
                $.getJSON('https://api.thingspeak.com/channels/242449/feed/last.json?api_key=OFVXA1K6NUEJPAM1', function(jd3) {
@@ -122,13 +128,15 @@ tr:nth-child(even) {
     <td><div id = "225temp">  </div></td>
     <td><div id = "225DT">  </div></td>	  
   </tr>
-  
-<!--
   <tr>
-    <td>Tank 224</td>
-    <td><div id = "224temp">  </div></td>
-    <td><div id = "224DT">  </div></td>
+    <td>Tank 222</td>
+    <td><div id = "222temp">  </div></td>
+    <td><div id = "222DT">  </div></td>
   </tr>
+	   
+	   
+	  
+<!--	   
   <tr>
     <td>Tank 421</td>
     <td><div id = "421temp">  </div></td>
