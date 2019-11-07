@@ -1,144 +1,143 @@
 <html>
 
-   <head>
-   
-   <style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
+<head>
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
-   
-   
-   
-   
-      <title>Tank Temperatures</title>
-      <script type = "text/javascript" 
-         src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		
-      <script type = "text/javascript" language = "javascript">
-         $(document).ready(function() {
-		    
-		    getUpdates(); 
-		    
-		    // check for new updates
-		    setInterval('getUpdates()',65000);
- 
-		});
-		
-		function getUpdates() {
+    <title>Tank Temperatures</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function() {
 
-			
-			// get the data with a webservice call
-               $.getJSON('https://api.thingspeak.com/channels/903159/feed/last.json?api_key=BFY3KTG85PICGT3S', function(jd) {
-					    					
-		// if the field1 has data update the page
-		if (jd.field1) {
-			
-		var d = new Date(''+jd.created_at+'');
-		var result = (d.toLocaleString());	
+            getUpdates();
 
-		$('#222temp').html('<p>' +jd.field1+  '</p>');
-		$('#222DT').html(result);
+            // check for new updates
+            setInterval('getUpdates()', 65000);
 
-		}          
-  
-			});
-			
-			// get the data with a webservice call
-               $.getJSON('https://api.thingspeak.com/channels/237253/feed/last.json?api_key=KKKY6GC33SKJ44YB', function(jd) {
-					    					
-		// if the field1 has data update the page
-		if (jd.field1) {
-			
-		var d = new Date(''+jd.created_at+'');
-		var result = (d.toLocaleString());	
+        });
 
-		$('#225temp').html('<p>' +jd.field1+  '</p>');
-		$('#225DT').html(result);
+        function getUpdates() {
 
-		}           
-  
-			});			
-			
+            // get the data with a webservice call
+            $.getJSON('https://api.thingspeak.com/channels/903159/feed/last.json?api_key=BFY3KTG85PICGT3S', function(jd) {
 
-/*			
-			
-									// get the data with a webservice call
-               $.getJSON('https://api.thingspeak.com/channels/242449/feed/last.json?api_key=OFVXA1K6NUEJPAM1', function(jd3) {
-					    					
-		// if the field1 has data update the page
-		if (jd3.field1) {
+                // if the field1 has data update the page
+                if (jd.field1) {
 
-		$('#223temp').html('<p>' +jd3.field1+  '</p>');
-		$('#223DT').html('<p>' Date(+jd3.created_at+).toLocaleString() '</p>');
+                    var d = new Date('' + jd.created_at + '');
+                    var result = (d.toLocaleString());
 
-		}       
-  
-			});
-			
-			
-									// get the data with a webservice call
-               $.getJSON('https://api.thingspeak.com/channels/242870/feed/last.json?api_key=YU8W4C18WJG1QD4N', function(jd4) {
-					    					
-		// if the field1 has data update the page
-		if (jd4.field1) {
+                    $('#222temp').html('<p>' + jd.field1 + '</p>');
+                    $('#222DT').html(result);
 
-		$('#223temp').html('<p>' +jd4.field1+  '</p>');
-		$('#223DT').html('<p>' Date(+jd4.created_at+).toLocaleString() '</p>');
+                }
 
-		}            
-  
-			});
-			
-		
-			
-*/			
-			
-		}
-      </script>
-   </head>
-	
-   <body>
-   
-   
-   
-   
-   <table>
-  <tr>
-    <th>Tank</th>
-    <th>Temperature (°f)</th>
-    <th>Date/Time</th>
-    <th>7 Day Report</th>  
-  </tr>
-  <tr>
-    <td><a href="https://thingspeak.com/channels/903159/charts/1?api_key=BFY3KTG85PICGT3S&results=1000&timescale=240">Tank 226</a></td>
-    <td><div id = "222temp">  </div></td>
-    <td><div id = "222DT">  </div></td>	  
-    <td><button onclick="window.location.href = 'https://api.thingspeak.com/channels/903159/fields/1.csv?api_key=BFY3KTG85PICGT3S&days=7&timezone=America%2FLos_Angeles';">Tank 226 Report</button></td>
-  </tr>
-  <tr>
-    <td><a href="https://thingspeak.com/channels/237253/charts/1?api_key=KKKY6GC33SKJ44YB&results=1000&timescale=240">Tank 225</a></td>
-    <td><div id = "225temp">  </div></td>
-    <td><div id = "225DT">  </div></td>
-    <td><button onclick="window.location.href = 'https://api.thingspeak.com/channels/237253/fields/1.csv?api_key=KKKY6GC33SKJ44YB&days=7&timezone=America%2FLos_Angeles';">Tank 225 Report</button></td>
-  </tr>
-	   
-	   
-	  
-<!--	   
+            });
+
+            // get the data with a webservice call
+            $.getJSON('https://api.thingspeak.com/channels/237253/feed/last.json?api_key=KKKY6GC33SKJ44YB', function(jd) {
+
+                // if the field1 has data update the page
+                if (jd.field1) {
+
+                    var d = new Date('' + jd.created_at + '');
+                    var result = (d.toLocaleString());
+
+                    $('#225temp').html('<p>' + jd.field1 + '</p>');
+                    $('#225DT').html(result);
+
+                }
+
+            });
+
+            /*			
+
+            									// get the data with a webservice call
+                           $.getJSON('https://api.thingspeak.com/channels/242449/feed/last.json?api_key=OFVXA1K6NUEJPAM1', function(jd3) {
+
+            		// if the field1 has data update the page
+            		if (jd3.field1) {
+
+            		$('#223temp').html('<p>' +jd3.field1+  '</p>');
+            		$('#223DT').html('<p>' Date(+jd3.created_at+).toLocaleString() '</p>');
+
+            		}       
+
+            			});
+
+            									// get the data with a webservice call
+                           $.getJSON('https://api.thingspeak.com/channels/242870/feed/last.json?api_key=YU8W4C18WJG1QD4N', function(jd4) {
+
+            		// if the field1 has data update the page
+            		if (jd4.field1) {
+
+            		$('#223temp').html('<p>' +jd4.field1+  '</p>');
+            		$('#223DT').html('<p>' Date(+jd4.created_at+).toLocaleString() '</p>');
+
+            		}            
+
+            			});
+
+            */
+
+        }
+    </script>
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <th>Tank</th>
+            <th>Temperature (°f)</th>
+            <th>Date/Time</th>
+            <th>7 Day Report</th>
+            <th>30 Day Report</th>
+        </tr>
+        <tr>
+            <td><a href="https://thingspeak.com/channels/903159/charts/1?api_key=BFY3KTG85PICGT3S&results=1000&timescale=240">Tank 226</a></td>
+            <td>
+                <div id="222temp"> </div>
+            </td>
+            <td>
+                <div id="222DT"> </div>
+            </td>
+            <td>
+                <button onclick="window.location.href = 'https://api.thingspeak.com/channels/903159/fields/1.csv?api_key=BFY3KTG85PICGT3S&days=7&timezone=America%2FLos_Angeles';">Tank 226 Report</button>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="https://thingspeak.com/channels/237253/charts/1?api_key=KKKY6GC33SKJ44YB&results=1000&timescale=240">Tank 225</a></td>
+            <td>
+                <div id="225temp"> </div>
+            </td>
+            <td>
+                <div id="225DT"> </div>
+            </td>
+            <td>
+                <button onclick="window.location.href = 'https://api.thingspeak.com/channels/237253/fields/1.csv?api_key=KKKY6GC33SKJ44YB&days=7&timezone=America%2FLos_Angeles';">Tank 225 Report</button>
+            </td>
+        </tr>
+
+        <!--	   
   <tr>
     <td>Tank 421</td>
     <td><div id = "421temp">  </div></td>
@@ -149,14 +148,11 @@ tr:nth-child(even) {
     <td><div id = "k3temp">  </div></td>
     <td><div id = "k3DT">  </div></td>
   </tr>
-  
+
 -->
-  
-</table>
+
+    </table>
 
 </body>
-   
 
-  
 </html>
-
