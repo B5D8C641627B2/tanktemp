@@ -121,11 +121,13 @@ tr:nth-child(even) {
     <th>Tank</th>
     <th>Temperature (°f)</th>
     <th>Date/Time</th>
+    <th>7 Day Report</th>  
   </tr>
   <tr>
     <td><a href="https://thingspeak.com/channels/903159/charts/1?api_key=BFY3KTG85PICGT3S&results=1000&timescale=240">Tank 226</a></td>
     <td><div id = "222temp">  </div></td>
     <td><div id = "222DT">  </div></td>	  
+    <td><button onclick="window.location.href = 'https://api.thingspeak.com/channels/903159/fields/1.csv?api_key=BFY3KTG85PICGT3S&days=7&timezone=America%2FLos_Angeles';">Report</button></td>
   </tr>
   <tr>
     <td><a href="https://thingspeak.com/channels/237253/charts/1?api_key=KKKY6GC33SKJ44YB&results=1000&timescale=240">Tank 225</a></td>
