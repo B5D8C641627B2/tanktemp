@@ -37,6 +37,38 @@
         function getUpdates() {
 
             // get the data with a webservice call
+            $.getJSON('https://api.thingspeak.com/channels/909347/feed/last.json?api_key=5PDLVM9JVZUASH3C', function(jd) {
+
+                // if the field1 has data update the page
+                if (jd.field1) {
+
+                    var d = new Date('' + jd.created_at + '');
+                    var result = (d.toLocaleString());
+
+                    $('#239temp').html('<p>' + jd.field1 + '</p>');
+                    $('#239DT').html(result);
+
+                }
+
+            });
+
+            // get the data with a webservice call
+            $.getJSON('https://api.thingspeak.com/channels/214775/feed/last.json?api_key=EIWT4IGW1IJY0ZBH', function(jd) {
+
+                // if the field1 has data update the page
+                if (jd.field1) {
+
+                    var d = new Date('' + jd.created_at + '');
+                    var result = (d.toLocaleString());
+
+                    $('#238temp').html('<p>' + jd.field1 + '</p>');
+                    $('#238DT').html(result);
+
+                }
+
+            });
+
+            // get the data with a webservice call
             $.getJSON('https://api.thingspeak.com/channels/903159/feed/last.json?api_key=BFY3KTG85PICGT3S', function(jd) {
 
                 // if the field1 has data update the page
@@ -45,8 +77,8 @@
                     var d = new Date('' + jd.created_at + '');
                     var result = (d.toLocaleString());
 
-                    $('#222temp').html('<p>' + jd.field1 + '</p>');
-                    $('#222DT').html(result);
+                    $('#226temp').html('<p>' + jd.field1 + '</p>');
+                    $('#226DT').html(result);
 
                 }
 
@@ -67,36 +99,10 @@
                 }
 
             });
-
-            /*			
-
-            									// get the data with a webservice call
-                           $.getJSON('https://api.thingspeak.com/channels/242449/feed/last.json?api_key=OFVXA1K6NUEJPAM1', function(jd3) {
-
-            		// if the field1 has data update the page
-            		if (jd3.field1) {
-
-            		$('#223temp').html('<p>' +jd3.field1+  '</p>');
-            		$('#223DT').html('<p>' Date(+jd3.created_at+).toLocaleString() '</p>');
-
-            		}       
-
-            			});
-
-            									// get the data with a webservice call
-                           $.getJSON('https://api.thingspeak.com/channels/242870/feed/last.json?api_key=YU8W4C18WJG1QD4N', function(jd4) {
-
-            		// if the field1 has data update the page
-            		if (jd4.field1) {
-
-            		$('#223temp').html('<p>' +jd4.field1+  '</p>');
-            		$('#223DT').html('<p>' Date(+jd4.created_at+).toLocaleString() '</p>');
-
-            		}            
-
-            			});
-
-            */
+            
+            
+            
+            
 
         }
     </script>
@@ -113,12 +119,42 @@
             <th>30 Day Report</th>
         </tr>
         <tr>
-            <td><a href="https://thingspeak.com/channels/903159/charts/1?api_key=BFY3KTG85PICGT3S&results=1000&timescale=60">Tank 226</a></td>
+            <td><a href="https://thingspeak.com/channels/909347/charts/1?api_key=5PDLVM9JVZUASH3C&results=1000&timescale=60">Tank 239</a></td>
             <td>
-                <div id="222temp"> </div>
+                <div id="239temp"> </div>
             </td>
             <td>
-                <div id="222DT"> </div>
+                <div id="239DT"> </div>
+            </td>
+            <td>
+                <button onclick="window.location.href = 'https://api.thingspeak.com/channels/909347/fields/1.csv?api_key=5PDLVM9JVZUASH3C&days=7&timezone=America%2FLos_Angeles&timescale=240';">TK239 7D Report</button>
+            </td>
+            <td>
+                <button onclick="window.location.href = 'https://api.thingspeak.com/channels/909347/fields/1.csv?api_key=5PDLVM9JVZUASH3C&days=30&timezone=America%2FLos_Angeles&timescale=240';">TK239 30D Report</button>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="https://thingspeak.com/channels/214775/charts/1?api_key=EIWT4IGW1IJY0ZBH&results=1000&timescale=60">Tank 238</a></td>
+            <td>
+                <div id="238temp"> </div>
+            </td>
+            <td>
+                <div id="238DT"> </div>
+            </td>
+            <td>
+                <button onclick="window.location.href = 'https://api.thingspeak.com/channels/214775/fields/1.csv?api_key=EIWT4IGW1IJY0ZBH&days=7&timezone=America%2FLos_Angeles&timescale=240';">TK238 7D Report</button>
+            </td>
+            <td>
+                <button onclick="window.location.href = 'https://api.thingspeak.com/channels/214775/fields/1.csv?api_key=EIWT4IGW1IJY0ZBH&days=30&timezone=America%2FLos_Angeles&timescale=240';">TK238 30D Report</button>
+            </td>            
+        </tr>
+        <tr>
+            <td><a href="https://thingspeak.com/channels/903159/charts/1?api_key=BFY3KTG85PICGT3S&results=1000&timescale=60">Tank 226</a></td>
+            <td>
+                <div id="226temp"> </div>
+            </td>
+            <td>
+                <div id="226DT"> </div>
             </td>
             <td>
                 <button onclick="window.location.href = 'https://api.thingspeak.com/channels/903159/fields/1.csv?api_key=BFY3KTG85PICGT3S&days=7&timezone=America%2FLos_Angeles&timescale=240';">TK226 7D Report</button>
@@ -142,7 +178,6 @@
                 <button onclick="window.location.href = 'https://api.thingspeak.com/channels/237253/fields/1.csv?api_key=KKKY6GC33SKJ44YB&days=30&timezone=America%2FLos_Angeles&timescale=240';">TK225 30D Report</button>
             </td>            
         </tr>
-
         <!--	   
   <tr>
     <td>Tank 421</td>
